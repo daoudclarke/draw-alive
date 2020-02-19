@@ -10,6 +10,7 @@ let oldX;
 let oldY;
 let isDrawing;
 let poly;
+let oldPoly;
 
 
 var myListener = function (event) {
@@ -31,6 +32,10 @@ document.addEventListener('mousedown', e => {
 
 document.addEventListener('mouseup', e => {
   isDrawing = false;
+    if (oldPoly) {
+	oldPoly.animate().plot(poly.array());
+    }
+    oldPoly = poly;
 });
 
 
